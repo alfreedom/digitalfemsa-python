@@ -1,0 +1,50 @@
+# CheckoutResponse
+
+checkout response
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**allowed_payment_methods** | **List[str]** |  | [optional] 
+**can_not_expire** | **bool** |  | [optional] 
+**emails_sent** | **int** |  | [optional] 
+**expires_at** | **int** |  | [optional] 
+**failure_url** | **str** |  | [optional] 
+**id** | **str** |  | 
+**livemode** | **bool** |  | 
+**metadata** | **Dict[str, object]** |  | [optional] 
+**name** | **str** | Reason for charge | 
+**needs_shipping_contact** | **bool** |  | [optional] 
+**object** | **str** |  | 
+**paid_payments_count** | **int** |  | [optional] 
+**payments_limit_count** | **int** |  | [optional] 
+**recurrent** | **bool** |  | [optional] 
+**slug** | **str** |  | [optional] 
+**sms_sent** | **int** |  | [optional] 
+**starts_at** | **int** |  | [optional] 
+**status** | **str** |  | [optional] 
+**success_url** | **str** |  | [optional] 
+**type** | **str** |  | [optional] 
+**url** | **str** |  | [optional] 
+
+## Example
+
+```python
+from digitalfemsa.models.checkout_response import CheckoutResponse
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of CheckoutResponse from a JSON string
+checkout_response_instance = CheckoutResponse.from_json(json)
+# print the JSON string representation of the object
+print(CheckoutResponse.to_json())
+
+# convert the object into a dict
+checkout_response_dict = checkout_response_instance.to_dict()
+# create an instance of CheckoutResponse from a dict
+checkout_response_from_dict = CheckoutResponse.from_dict(checkout_response_dict)
+```
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
