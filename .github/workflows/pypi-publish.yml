@@ -18,7 +18,7 @@ jobs:
         run: |
           if [[ $(jq '.sender.type' $GITHUB_EVENT_PATH) == '"User"' ]]; then
             creator_login=${{ github.event.release.author.login }}
-            if ! grep -q $creator_login AUTHORS.md; then
+             if ! grep -q $creator_login .github/CODEOWNERS; then
               echo "Release creator is not an code owner, skipping the rest of the workflow."
               exit 1
             fi
