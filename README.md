@@ -53,8 +53,8 @@ Please follow the [installation procedure](#installation--usage) and then run th
 ```python
 
 import time
-import digitialfemsa
-from digitialfemsa.rest import ApiException
+import digitalfemsa
+from digitalfemsa.rest import ApiException
 from pprint import pprint
 
 # The client must configure the authentication and authorization parameters
@@ -63,16 +63,16 @@ from pprint import pprint
 # satisfies your auth use case.
 
 # Configure Bearer authorization: bearerAuth
-configuration = digitialfemsa.Configuration(
+configuration = digitalfemsa.Configuration(
     access_token = os.environ["API_KEY"]
 )
 
 
 # Enter a context with an instance of the API client
-with digitialfemsa.ApiClient(configuration) as api_client:
+with digitalfemsa.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = digitialfemsa.CustomersApi(api_client)
-    customer = digitialfemsa.Customer(
+    api_instance = digitalfemsa.CustomersApi(api_client)
+    customer = digitalfemsa.Customer(
         email='customer@customer.com',
         name='Customer Name',
         phone='5534343434'
