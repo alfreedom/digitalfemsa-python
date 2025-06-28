@@ -5,7 +5,7 @@ description = "Femsa API"
 authors = [
   {name = "Engineering Femsa",email = "engineering@femsa.com"},
 ]
-license = "MIT-LICENSE"
+license = "MIT"
 readme = "README.md"
 keywords = ["OpenAPI", "OpenAPI-Generator", "Femsa API"]
 requires-python = ">=3.9"
