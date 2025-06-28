@@ -47,11 +47,10 @@ class OrderRequest(BaseModel):
     metadata: Optional[Dict[str, Any]] = Field(default=None, description="Metadata associated with the order")
     needs_shipping_contact: Optional[StrictBool] = Field(default=None, description="Allows you to fill out the shipping information at checkout")
     processing_mode: Optional[StrictStr] = Field(default=None, description="Indicates the processing mode for the order, either ecommerce, recurrent or validation.")
-    return_url: Optional[StrictStr] = Field(default=None, description="Indicates the redirection callback upon completion of the 3DS2 flow.")
     shipping_contact: Optional[CustomerShippingContacts] = None
     shipping_lines: Optional[List[ShippingRequest]] = Field(default=None, description="List of [shipping costs](https://developers.femsa.com/v2.1.0/reference/orderscreateshipping). If the online store offers digital products.")
     tax_lines: Optional[List[OrderTaxRequest]] = Field(default=None, description="List of [taxes](https://developers.femsa.com/v2.1.0/reference/orderscreatetaxes) that are applied to the order.")
-    __properties: ClassVar[List[str]] = ["charges", "checkout", "currency", "customer_info", "discount_lines", "fiscal_entity", "line_items", "metadata", "needs_shipping_contact", "processing_mode", "return_url", "shipping_contact", "shipping_lines", "tax_lines"]
+    __properties: ClassVar[List[str]] = ["charges", "checkout", "currency", "customer_info", "discount_lines", "fiscal_entity", "line_items", "metadata", "needs_shipping_contact", "processing_mode", "shipping_contact", "shipping_lines", "tax_lines"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -95,9 +94,9 @@ class OrderRequest(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in charges (list)
         _items = []
         if self.charges:
-            for _item in self.charges:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_charges in self.charges:
+                if _item_charges:
+                    _items.append(_item_charges.to_dict())
             _dict['charges'] = _items
         # override the default output from pydantic by calling `to_dict()` of checkout
         if self.checkout:
@@ -108,9 +107,9 @@ class OrderRequest(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in discount_lines (list)
         _items = []
         if self.discount_lines:
-            for _item in self.discount_lines:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_discount_lines in self.discount_lines:
+                if _item_discount_lines:
+                    _items.append(_item_discount_lines.to_dict())
             _dict['discount_lines'] = _items
         # override the default output from pydantic by calling `to_dict()` of fiscal_entity
         if self.fiscal_entity:
@@ -118,9 +117,9 @@ class OrderRequest(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in line_items (list)
         _items = []
         if self.line_items:
-            for _item in self.line_items:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_line_items in self.line_items:
+                if _item_line_items:
+                    _items.append(_item_line_items.to_dict())
             _dict['line_items'] = _items
         # override the default output from pydantic by calling `to_dict()` of shipping_contact
         if self.shipping_contact:
@@ -128,16 +127,16 @@ class OrderRequest(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in shipping_lines (list)
         _items = []
         if self.shipping_lines:
-            for _item in self.shipping_lines:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_shipping_lines in self.shipping_lines:
+                if _item_shipping_lines:
+                    _items.append(_item_shipping_lines.to_dict())
             _dict['shipping_lines'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in tax_lines (list)
         _items = []
         if self.tax_lines:
-            for _item in self.tax_lines:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_tax_lines in self.tax_lines:
+                if _item_tax_lines:
+                    _items.append(_item_tax_lines.to_dict())
             _dict['tax_lines'] = _items
         return _dict
 
@@ -161,7 +160,6 @@ class OrderRequest(BaseModel):
             "metadata": obj.get("metadata"),
             "needs_shipping_contact": obj.get("needs_shipping_contact"),
             "processing_mode": obj.get("processing_mode"),
-            "return_url": obj.get("return_url"),
             "shipping_contact": CustomerShippingContacts.from_dict(obj["shipping_contact"]) if obj.get("shipping_contact") is not None else None,
             "shipping_lines": [ShippingRequest.from_dict(_item) for _item in obj["shipping_lines"]] if obj.get("shipping_lines") is not None else None,
             "tax_lines": [OrderTaxRequest.from_dict(_item) for _item in obj["tax_lines"]] if obj.get("tax_lines") is not None else None

@@ -21,8 +21,8 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from digitalfemsa.models.charge_response_channel import ChargeResponseChannel
-from digitalfemsa.models.charge_response_payment_method import ChargeResponsePaymentMethod
 from digitalfemsa.models.charge_response_refunds import ChargeResponseRefunds
+from digitalfemsa.models.payment_method_cash import PaymentMethodCash
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -44,7 +44,7 @@ class ChargeResponse(BaseModel):
     object: Optional[StrictStr] = None
     order_id: Optional[StrictStr] = None
     paid_at: Optional[StrictInt] = None
-    payment_method: Optional[ChargeResponsePaymentMethod] = None
+    payment_method: Optional[PaymentMethodCash] = None
     reference_id: Optional[StrictStr] = Field(default=None, description="Reference ID of the charge")
     refunds: Optional[ChargeResponseRefunds] = None
     status: Optional[StrictStr] = None
@@ -139,7 +139,7 @@ class ChargeResponse(BaseModel):
             "object": obj.get("object"),
             "order_id": obj.get("order_id"),
             "paid_at": obj.get("paid_at"),
-            "payment_method": ChargeResponsePaymentMethod.from_dict(obj["payment_method"]) if obj.get("payment_method") is not None else None,
+            "payment_method": PaymentMethodCash.from_dict(obj["payment_method"]) if obj.get("payment_method") is not None else None,
             "reference_id": obj.get("reference_id"),
             "refunds": ChargeResponseRefunds.from_dict(obj["refunds"]) if obj.get("refunds") is not None else None,
             "status": obj.get("status")

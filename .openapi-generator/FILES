@@ -37,12 +37,10 @@ digitalfemsa/models/api_key_update_request.py
 digitalfemsa/models/balance_common_field.py
 digitalfemsa/models/balance_response.py
 digitalfemsa/models/charge_order_response.py
-digitalfemsa/models/charge_order_response_payment_method.py
 digitalfemsa/models/charge_request.py
 digitalfemsa/models/charge_request_payment_method.py
 digitalfemsa/models/charge_response.py
 digitalfemsa/models/charge_response_channel.py
-digitalfemsa/models/charge_response_payment_method.py
 digitalfemsa/models/charge_response_refunds.py
 digitalfemsa/models/charge_response_refunds_data.py
 digitalfemsa/models/charge_update_request.py
@@ -58,8 +56,6 @@ digitalfemsa/models/company_fiscal_info_response.py
 digitalfemsa/models/company_payout_destination_response.py
 digitalfemsa/models/company_response.py
 digitalfemsa/models/create_customer_fiscal_entities_response.py
-digitalfemsa/models/create_customer_payment_methods_request.py
-digitalfemsa/models/create_customer_payment_methods_response.py
 digitalfemsa/models/customer.py
 digitalfemsa/models/customer_address.py
 digitalfemsa/models/customer_antifraud_info.py
@@ -71,8 +67,6 @@ digitalfemsa/models/customer_info.py
 digitalfemsa/models/customer_info_just_customer_id.py
 digitalfemsa/models/customer_info_just_customer_id_response.py
 digitalfemsa/models/customer_payment_method_request.py
-digitalfemsa/models/customer_payment_methods_data.py
-digitalfemsa/models/customer_payment_methods_request.py
 digitalfemsa/models/customer_payment_methods_response.py
 digitalfemsa/models/customer_response.py
 digitalfemsa/models/customer_response_shipping_contacts.py
@@ -97,7 +91,6 @@ digitalfemsa/models/fiscal_entity_address.py
 digitalfemsa/models/get_api_keys_response.py
 digitalfemsa/models/get_charges_response.py
 digitalfemsa/models/get_companies_response.py
-digitalfemsa/models/get_customer_payment_method_data_response.py
 digitalfemsa/models/get_events_response.py
 digitalfemsa/models/get_order_discount_lines_response.py
 digitalfemsa/models/get_orders_response.py
@@ -115,8 +108,6 @@ digitalfemsa/models/order_discount_lines_request.py
 digitalfemsa/models/order_fiscal_entity_address_response.py
 digitalfemsa/models/order_fiscal_entity_request.py
 digitalfemsa/models/order_fiscal_entity_response.py
-digitalfemsa/models/order_next_action_response.py
-digitalfemsa/models/order_next_action_response_redirect_to_url.py
 digitalfemsa/models/order_refund_request.py
 digitalfemsa/models/order_request.py
 digitalfemsa/models/order_request_customer_info.py
@@ -153,7 +144,6 @@ digitalfemsa/models/transfers_response.py
 digitalfemsa/models/update_customer.py
 digitalfemsa/models/update_customer_antifraud_info.py
 digitalfemsa/models/update_customer_fiscal_entities_response.py
-digitalfemsa/models/update_customer_payment_methods_response.py
 digitalfemsa/models/update_order_discount_lines_request.py
 digitalfemsa/models/update_order_tax_request.py
 digitalfemsa/models/update_order_tax_response.py
@@ -180,12 +170,10 @@ docs/BalanceCommonField.md
 docs/BalanceResponse.md
 docs/BalancesApi.md
 docs/ChargeOrderResponse.md
-docs/ChargeOrderResponsePaymentMethod.md
 docs/ChargeRequest.md
 docs/ChargeRequestPaymentMethod.md
 docs/ChargeResponse.md
 docs/ChargeResponseChannel.md
-docs/ChargeResponsePaymentMethod.md
 docs/ChargeResponseRefunds.md
 docs/ChargeResponseRefundsData.md
 docs/ChargeUpdateRequest.md
@@ -203,8 +191,6 @@ docs/CompanyFiscalInfoResponse.md
 docs/CompanyPayoutDestinationResponse.md
 docs/CompanyResponse.md
 docs/CreateCustomerFiscalEntitiesResponse.md
-docs/CreateCustomerPaymentMethodsRequest.md
-docs/CreateCustomerPaymentMethodsResponse.md
 docs/Customer.md
 docs/CustomerAddress.md
 docs/CustomerAntifraudInfo.md
@@ -216,8 +202,6 @@ docs/CustomerInfo.md
 docs/CustomerInfoJustCustomerId.md
 docs/CustomerInfoJustCustomerIdResponse.md
 docs/CustomerPaymentMethodRequest.md
-docs/CustomerPaymentMethodsData.md
-docs/CustomerPaymentMethodsRequest.md
 docs/CustomerPaymentMethodsResponse.md
 docs/CustomerResponse.md
 docs/CustomerResponseShippingContacts.md
@@ -245,7 +229,6 @@ docs/FiscalEntityAddress.md
 docs/GetApiKeysResponse.md
 docs/GetChargesResponse.md
 docs/GetCompaniesResponse.md
-docs/GetCustomerPaymentMethodDataResponse.md
 docs/GetEventsResponse.md
 docs/GetOrderDiscountLinesResponse.md
 docs/GetOrdersResponse.md
@@ -264,8 +247,6 @@ docs/OrderDiscountLinesRequest.md
 docs/OrderFiscalEntityAddressResponse.md
 docs/OrderFiscalEntityRequest.md
 docs/OrderFiscalEntityResponse.md
-docs/OrderNextActionResponse.md
-docs/OrderNextActionResponseRedirectToUrl.md
 docs/OrderRefundRequest.md
 docs/OrderRequest.md
 docs/OrderRequestCustomerInfo.md
@@ -311,7 +292,6 @@ docs/TransfersResponse.md
 docs/UpdateCustomer.md
 docs/UpdateCustomerAntifraudInfo.md
 docs/UpdateCustomerFiscalEntitiesResponse.md
-docs/UpdateCustomerPaymentMethodsResponse.md
 docs/UpdateOrderDiscountLinesRequest.md
 docs/UpdateOrderTaxRequest.md
 docs/UpdateOrderTaxResponse.md
@@ -334,23 +314,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_api_keys_api.py
-test/test_balances_api.py
-test/test_charges_api.py
-test/test_companies_api.py
-test/test_customers_api.py
-test/test_discounts_api.py
-test/test_events_api.py
-test/test_logs_api.py
-test/test_orders_api.py
-test/test_payment_link_api.py
-test/test_payment_methods_api.py
-test/test_products_api.py
-test/test_shipping_contacts_api.py
-test/test_shippings_api.py
-test/test_taxes_api.py
-test/test_transactions_api.py
-test/test_transfers_api.py
-test/test_webhook_keys_api.py
-test/test_webhooks_api.py
 tox.ini

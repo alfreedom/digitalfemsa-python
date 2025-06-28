@@ -20,10 +20,9 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictStr, field_validator
 from typing import Optional
 from typing_extensions import Annotated
-from digitalfemsa.models.create_customer_payment_methods_request import CreateCustomerPaymentMethodsRequest
-from digitalfemsa.models.create_customer_payment_methods_response import CreateCustomerPaymentMethodsResponse
 from digitalfemsa.models.get_payment_method_response import GetPaymentMethodResponse
-from digitalfemsa.models.update_customer_payment_methods_response import UpdateCustomerPaymentMethodsResponse
+from digitalfemsa.models.payment_method_cash_request import PaymentMethodCashRequest
+from digitalfemsa.models.payment_method_cash_response import PaymentMethodCashResponse
 from digitalfemsa.models.update_payment_methods import UpdatePaymentMethods
 
 from digitalfemsa.api_client import ApiClient, RequestSerialized
@@ -48,7 +47,7 @@ class PaymentMethodsApi:
     def create_customer_payment_methods(
         self,
         id: Annotated[StrictStr, Field(description="Identifier of the resource")],
-        create_customer_payment_methods_request: Annotated[CreateCustomerPaymentMethodsRequest, Field(description="requested field for customer payment methods")],
+        body: Annotated[PaymentMethodCashRequest, Field(description="requested field for customer payment methods")],
         accept_language: Annotated[Optional[StrictStr], Field(description="Use for knowing which language to use")] = None,
         x_child_company_id: Annotated[Optional[StrictStr], Field(description="In the case of a holding company, the company id of the child company to which will process the request.")] = None,
         _request_timeout: Union[
@@ -63,15 +62,15 @@ class PaymentMethodsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> CreateCustomerPaymentMethodsResponse:
+    ) -> PaymentMethodCashResponse:
         """Create Payment Method
 
         Create a payment method for a customer.
 
         :param id: Identifier of the resource (required)
         :type id: str
-        :param create_customer_payment_methods_request: requested field for customer payment methods (required)
-        :type create_customer_payment_methods_request: CreateCustomerPaymentMethodsRequest
+        :param body: requested field for customer payment methods (required)
+        :type body: PaymentMethodCashRequest
         :param accept_language: Use for knowing which language to use
         :type accept_language: str
         :param x_child_company_id: In the case of a holding company, the company id of the child company to which will process the request.
@@ -100,7 +99,7 @@ class PaymentMethodsApi:
 
         _param = self._create_customer_payment_methods_serialize(
             id=id,
-            create_customer_payment_methods_request=create_customer_payment_methods_request,
+            body=body,
             accept_language=accept_language,
             x_child_company_id=x_child_company_id,
             _request_auth=_request_auth,
@@ -110,7 +109,7 @@ class PaymentMethodsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "CreateCustomerPaymentMethodsResponse",
+            '200': "PaymentMethodCashResponse",
             '401': "Error",
             '404': "Error",
             '422': "Error",
@@ -131,7 +130,7 @@ class PaymentMethodsApi:
     def create_customer_payment_methods_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="Identifier of the resource")],
-        create_customer_payment_methods_request: Annotated[CreateCustomerPaymentMethodsRequest, Field(description="requested field for customer payment methods")],
+        body: Annotated[PaymentMethodCashRequest, Field(description="requested field for customer payment methods")],
         accept_language: Annotated[Optional[StrictStr], Field(description="Use for knowing which language to use")] = None,
         x_child_company_id: Annotated[Optional[StrictStr], Field(description="In the case of a holding company, the company id of the child company to which will process the request.")] = None,
         _request_timeout: Union[
@@ -146,15 +145,15 @@ class PaymentMethodsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[CreateCustomerPaymentMethodsResponse]:
+    ) -> ApiResponse[PaymentMethodCashResponse]:
         """Create Payment Method
 
         Create a payment method for a customer.
 
         :param id: Identifier of the resource (required)
         :type id: str
-        :param create_customer_payment_methods_request: requested field for customer payment methods (required)
-        :type create_customer_payment_methods_request: CreateCustomerPaymentMethodsRequest
+        :param body: requested field for customer payment methods (required)
+        :type body: PaymentMethodCashRequest
         :param accept_language: Use for knowing which language to use
         :type accept_language: str
         :param x_child_company_id: In the case of a holding company, the company id of the child company to which will process the request.
@@ -183,7 +182,7 @@ class PaymentMethodsApi:
 
         _param = self._create_customer_payment_methods_serialize(
             id=id,
-            create_customer_payment_methods_request=create_customer_payment_methods_request,
+            body=body,
             accept_language=accept_language,
             x_child_company_id=x_child_company_id,
             _request_auth=_request_auth,
@@ -193,7 +192,7 @@ class PaymentMethodsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "CreateCustomerPaymentMethodsResponse",
+            '200': "PaymentMethodCashResponse",
             '401': "Error",
             '404': "Error",
             '422': "Error",
@@ -214,7 +213,7 @@ class PaymentMethodsApi:
     def create_customer_payment_methods_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="Identifier of the resource")],
-        create_customer_payment_methods_request: Annotated[CreateCustomerPaymentMethodsRequest, Field(description="requested field for customer payment methods")],
+        body: Annotated[PaymentMethodCashRequest, Field(description="requested field for customer payment methods")],
         accept_language: Annotated[Optional[StrictStr], Field(description="Use for knowing which language to use")] = None,
         x_child_company_id: Annotated[Optional[StrictStr], Field(description="In the case of a holding company, the company id of the child company to which will process the request.")] = None,
         _request_timeout: Union[
@@ -236,8 +235,8 @@ class PaymentMethodsApi:
 
         :param id: Identifier of the resource (required)
         :type id: str
-        :param create_customer_payment_methods_request: requested field for customer payment methods (required)
-        :type create_customer_payment_methods_request: CreateCustomerPaymentMethodsRequest
+        :param body: requested field for customer payment methods (required)
+        :type body: PaymentMethodCashRequest
         :param accept_language: Use for knowing which language to use
         :type accept_language: str
         :param x_child_company_id: In the case of a holding company, the company id of the child company to which will process the request.
@@ -266,7 +265,7 @@ class PaymentMethodsApi:
 
         _param = self._create_customer_payment_methods_serialize(
             id=id,
-            create_customer_payment_methods_request=create_customer_payment_methods_request,
+            body=body,
             accept_language=accept_language,
             x_child_company_id=x_child_company_id,
             _request_auth=_request_auth,
@@ -276,7 +275,7 @@ class PaymentMethodsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "CreateCustomerPaymentMethodsResponse",
+            '200': "PaymentMethodCashResponse",
             '401': "Error",
             '404': "Error",
             '422': "Error",
@@ -292,7 +291,7 @@ class PaymentMethodsApi:
     def _create_customer_payment_methods_serialize(
         self,
         id,
-        create_customer_payment_methods_request,
+        body,
         accept_language,
         x_child_company_id,
         _request_auth,
@@ -310,7 +309,9 @@ class PaymentMethodsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -324,16 +325,17 @@ class PaymentMethodsApi:
             _header_params['X-Child-Company-Id'] = x_child_company_id
         # process the form parameters
         # process the body parameter
-        if create_customer_payment_methods_request is not None:
-            _body_params = create_customer_payment_methods_request
+        if body is not None:
+            _body_params = body
 
 
         # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            [
-                'application/vnd.app-v2.1.0+json'
-            ]
-        )
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/vnd.app-v2.1.0+json'
+                ]
+            )
 
         # set the HTTP header `Content-Type`
         if _content_type:
@@ -391,7 +393,7 @@ class PaymentMethodsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> UpdateCustomerPaymentMethodsResponse:
+    ) -> PaymentMethodCashResponse:
         """Delete Payment Method
 
         Delete an existing payment method
@@ -438,7 +440,7 @@ class PaymentMethodsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "UpdateCustomerPaymentMethodsResponse",
+            '200': "PaymentMethodCashResponse",
             '401': "Error",
             '404': "Error",
             '422': "Error",
@@ -474,7 +476,7 @@ class PaymentMethodsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[UpdateCustomerPaymentMethodsResponse]:
+    ) -> ApiResponse[PaymentMethodCashResponse]:
         """Delete Payment Method
 
         Delete an existing payment method
@@ -521,7 +523,7 @@ class PaymentMethodsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "UpdateCustomerPaymentMethodsResponse",
+            '200': "PaymentMethodCashResponse",
             '401': "Error",
             '404': "Error",
             '422': "Error",
@@ -604,7 +606,7 @@ class PaymentMethodsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "UpdateCustomerPaymentMethodsResponse",
+            '200': "PaymentMethodCashResponse",
             '401': "Error",
             '404': "Error",
             '422': "Error",
@@ -638,7 +640,9 @@ class PaymentMethodsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -657,11 +661,12 @@ class PaymentMethodsApi:
 
 
         # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            [
-                'application/vnd.app-v2.1.0+json'
-            ]
-        )
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/vnd.app-v2.1.0+json'
+                ]
+            )
 
 
         # authentication setting
@@ -989,7 +994,9 @@ class PaymentMethodsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1022,11 +1029,12 @@ class PaymentMethodsApi:
 
 
         # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            [
-                'application/vnd.app-v2.1.0+json'
-            ]
-        )
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/vnd.app-v2.1.0+json'
+                ]
+            )
 
 
         # authentication setting
@@ -1072,7 +1080,7 @@ class PaymentMethodsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> UpdateCustomerPaymentMethodsResponse:
+    ) -> PaymentMethodCashResponse:
         """Update Payment Method
 
         Gets a payment Method that corresponds to a customer ID.
@@ -1122,7 +1130,7 @@ class PaymentMethodsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "UpdateCustomerPaymentMethodsResponse",
+            '200': "PaymentMethodCashResponse",
             '401': "Error",
             '404': "Error",
             '422': "Error",
@@ -1159,7 +1167,7 @@ class PaymentMethodsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[UpdateCustomerPaymentMethodsResponse]:
+    ) -> ApiResponse[PaymentMethodCashResponse]:
         """Update Payment Method
 
         Gets a payment Method that corresponds to a customer ID.
@@ -1209,7 +1217,7 @@ class PaymentMethodsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "UpdateCustomerPaymentMethodsResponse",
+            '200': "PaymentMethodCashResponse",
             '401': "Error",
             '404': "Error",
             '422': "Error",
@@ -1296,7 +1304,7 @@ class PaymentMethodsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "UpdateCustomerPaymentMethodsResponse",
+            '200': "PaymentMethodCashResponse",
             '401': "Error",
             '404': "Error",
             '422': "Error",
@@ -1331,7 +1339,9 @@ class PaymentMethodsApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1352,11 +1362,12 @@ class PaymentMethodsApi:
 
 
         # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            [
-                'application/vnd.app-v2.1.0+json'
-            ]
-        )
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/vnd.app-v2.1.0+json'
+                ]
+            )
 
         # set the HTTP header `Content-Type`
         if _content_type:

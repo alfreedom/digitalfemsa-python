@@ -21,8 +21,8 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from digitalfemsa.models.customer_fiscal_entities_request import CustomerFiscalEntitiesRequest
-from digitalfemsa.models.customer_payment_methods_request import CustomerPaymentMethodsRequest
 from digitalfemsa.models.customer_shipping_contacts import CustomerShippingContacts
+from digitalfemsa.models.payment_method_cash_request import PaymentMethodCashRequest
 from digitalfemsa.models.update_customer_antifraud_info import UpdateCustomerAntifraudInfo
 from typing import Optional, Set
 from typing_extensions import Self
@@ -41,7 +41,7 @@ class UpdateCustomer(BaseModel):
     custom_reference: Optional[StrictStr] = Field(default=None, description="It is an undefined value.")
     fiscal_entities: Optional[List[CustomerFiscalEntitiesRequest]] = None
     metadata: Optional[Dict[str, Any]] = None
-    payment_sources: Optional[List[CustomerPaymentMethodsRequest]] = Field(default=None, description="Contains details of the payment methods that the customer has active or has used in Femsa")
+    payment_sources: Optional[List[PaymentMethodCashRequest]] = Field(default=None, description="Contains details of the payment methods that the customer has active or has used in Femsa")
     shipping_contacts: Optional[List[CustomerShippingContacts]] = Field(default=None, description="Contains the detail of the shipping addresses that the client has active or has used in Femsa")
     __properties: ClassVar[List[str]] = ["antifraud_info", "default_payment_source_id", "email", "name", "phone", "default_shipping_contact_id", "corporate", "custom_reference", "fiscal_entities", "metadata", "payment_sources", "shipping_contacts"]
 
@@ -90,23 +90,23 @@ class UpdateCustomer(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in fiscal_entities (list)
         _items = []
         if self.fiscal_entities:
-            for _item in self.fiscal_entities:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_fiscal_entities in self.fiscal_entities:
+                if _item_fiscal_entities:
+                    _items.append(_item_fiscal_entities.to_dict())
             _dict['fiscal_entities'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in payment_sources (list)
         _items = []
         if self.payment_sources:
-            for _item in self.payment_sources:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_payment_sources in self.payment_sources:
+                if _item_payment_sources:
+                    _items.append(_item_payment_sources.to_dict())
             _dict['payment_sources'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in shipping_contacts (list)
         _items = []
         if self.shipping_contacts:
-            for _item in self.shipping_contacts:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_shipping_contacts in self.shipping_contacts:
+                if _item_shipping_contacts:
+                    _items.append(_item_shipping_contacts.to_dict())
             _dict['shipping_contacts'] = _items
         # set to None if antifraud_info (nullable) is None
         # and model_fields_set contains the field
@@ -135,7 +135,7 @@ class UpdateCustomer(BaseModel):
             "custom_reference": obj.get("custom_reference"),
             "fiscal_entities": [CustomerFiscalEntitiesRequest.from_dict(_item) for _item in obj["fiscal_entities"]] if obj.get("fiscal_entities") is not None else None,
             "metadata": obj.get("metadata"),
-            "payment_sources": [CustomerPaymentMethodsRequest.from_dict(_item) for _item in obj["payment_sources"]] if obj.get("payment_sources") is not None else None,
+            "payment_sources": [PaymentMethodCashRequest.from_dict(_item) for _item in obj["payment_sources"]] if obj.get("payment_sources") is not None else None,
             "shipping_contacts": [CustomerShippingContacts.from_dict(_item) for _item in obj["shipping_contacts"]] if obj.get("shipping_contacts") is not None else None
         })
         return _obj

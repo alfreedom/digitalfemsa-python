@@ -21,7 +21,6 @@ Name | Type | Description | Notes
 **line_items** | [**OrderResponseProducts**](OrderResponseProducts.md) |  | [optional] 
 **livemode** | **bool** | Whether the object exists in live mode or test mode | [optional] 
 **metadata** | **Dict[str, object]** | Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format. | [optional] 
-**next_action** | [**OrderNextActionResponse**](OrderNextActionResponse.md) |  | [optional] 
 **object** | **str** | String representing the object’s type. Objects of the same type share the same value. | [optional] 
 **payment_status** | **str** | The payment status of the order. | [optional] 
 **processing_mode** | **str** | Indicates the processing mode for the order, either ecommerce, recurrent or validation. | [optional] 

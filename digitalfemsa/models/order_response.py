@@ -22,7 +22,6 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, Strict
 from typing import Any, ClassVar, Dict, List, Optional
 from digitalfemsa.models.charge_response_channel import ChargeResponseChannel
 from digitalfemsa.models.order_fiscal_entity_response import OrderFiscalEntityResponse
-from digitalfemsa.models.order_next_action_response import OrderNextActionResponse
 from digitalfemsa.models.order_response_charges import OrderResponseCharges
 from digitalfemsa.models.order_response_checkout import OrderResponseCheckout
 from digitalfemsa.models.order_response_customer_info import OrderResponseCustomerInfo
@@ -51,13 +50,12 @@ class OrderResponse(BaseModel):
     line_items: Optional[OrderResponseProducts] = None
     livemode: Optional[StrictBool] = Field(default=None, description="Whether the object exists in live mode or test mode")
     metadata: Optional[Dict[str, Any]] = Field(default=None, description="Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.")
-    next_action: Optional[OrderNextActionResponse] = None
     object: Optional[StrictStr] = Field(default=None, description="String representing the object’s type. Objects of the same type share the same value.")
     payment_status: Optional[StrictStr] = Field(default=None, description="The payment status of the order.")
     processing_mode: Optional[StrictStr] = Field(default=None, description="Indicates the processing mode for the order, either ecommerce, recurrent or validation.")
     shipping_contact: Optional[OrderResponseShippingContact] = None
     updated_at: Optional[StrictInt] = Field(default=None, description="The time at which the object was last updated in seconds since the Unix epoch")
-    __properties: ClassVar[List[str]] = ["amount", "amount_refunded", "channel", "charges", "checkout", "created_at", "currency", "customer_info", "discount_lines", "fiscal_entity", "id", "is_refundable", "line_items", "livemode", "metadata", "next_action", "object", "payment_status", "processing_mode", "shipping_contact", "updated_at"]
+    __properties: ClassVar[List[str]] = ["amount", "amount_refunded", "channel", "charges", "checkout", "created_at", "currency", "customer_info", "discount_lines", "fiscal_entity", "id", "is_refundable", "line_items", "livemode", "metadata", "object", "payment_status", "processing_mode", "shipping_contact", "updated_at"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -119,9 +117,6 @@ class OrderResponse(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of line_items
         if self.line_items:
             _dict['line_items'] = self.line_items.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of next_action
-        if self.next_action:
-            _dict['next_action'] = self.next_action.to_dict()
         # override the default output from pydantic by calling `to_dict()` of shipping_contact
         if self.shipping_contact:
             _dict['shipping_contact'] = self.shipping_contact.to_dict()
@@ -157,7 +152,6 @@ class OrderResponse(BaseModel):
             "line_items": OrderResponseProducts.from_dict(obj["line_items"]) if obj.get("line_items") is not None else None,
             "livemode": obj.get("livemode"),
             "metadata": obj.get("metadata"),
-            "next_action": OrderNextActionResponse.from_dict(obj["next_action"]) if obj.get("next_action") is not None else None,
             "object": obj.get("object"),
             "payment_status": obj.get("payment_status"),
             "processing_mode": obj.get("processing_mode"),

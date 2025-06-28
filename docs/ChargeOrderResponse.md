@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **object** | **str** |  | [optional] 
 **order_id** | **str** |  | [optional] 
 **paid_at** | **int** |  | [optional] 
-**payment_method** | [**ChargeOrderResponsePaymentMethod**](ChargeOrderResponsePaymentMethod.md) |  | [optional] 
+**payment_method** | [**PaymentMethodCash**](PaymentMethodCash.md) |  | [optional] 
 **reference_id** | **str** | Reference ID of the charge | [optional] 
 **refunds** | **List[object]** |  | [optional] 
 **status** | **str** |  | [optional] 

@@ -16,7 +16,6 @@ Name | Type | Description | Notes
 **metadata** | **Dict[str, object]** | Metadata associated with the order | [optional] 
 **needs_shipping_contact** | **bool** | Allows you to fill out the shipping information at checkout | [optional] 
 **processing_mode** | **str** | Indicates the processing mode for the order, either ecommerce, recurrent or validation. | [optional] 
-**return_url** | **str** | Indicates the redirection callback upon completion of the 3DS2 flow. | [optional] 
 **shipping_contact** | [**CustomerShippingContacts**](CustomerShippingContacts.md) |  | [optional] 
 **shipping_lines** | [**List[ShippingRequest]**](ShippingRequest.md) | List of [shipping costs](https://developers.femsa.com/v2.1.0/reference/orderscreateshipping). If the online store offers digital products. | [optional] 
 **tax_lines** | [**List[OrderTaxRequest]**](OrderTaxRequest.md) | List of [taxes](https://developers.femsa.com/v2.1.0/reference/orderscreatetaxes) that are applied to the order. | [optional] 

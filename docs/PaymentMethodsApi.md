@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **create_customer_payment_methods**
-> CreateCustomerPaymentMethodsResponse create_customer_payment_methods(id, create_customer_payment_methods_request, accept_language=accept_language, x_child_company_id=x_child_company_id)
+> PaymentMethodCashResponse create_customer_payment_methods(id, body, accept_language=accept_language, x_child_company_id=x_child_company_id)
 
 Create Payment Method
 
@@ -23,8 +23,8 @@ Create a payment method for a customer.
 
 ```python
 import digitalfemsa
-from digitalfemsa.models.create_customer_payment_methods_request import CreateCustomerPaymentMethodsRequest
-from digitalfemsa.models.create_customer_payment_methods_response import CreateCustomerPaymentMethodsResponse
+from digitalfemsa.models.payment_method_cash_request import PaymentMethodCashRequest
+from digitalfemsa.models.payment_method_cash_response import PaymentMethodCashResponse
 from digitalfemsa.rest import ApiException
 from pprint import pprint
 
@@ -49,13 +49,13 @@ with digitalfemsa.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = digitalfemsa.PaymentMethodsApi(api_client)
     id = '6307a60c41de27127515a575' # str | Identifier of the resource
-    create_customer_payment_methods_request = {"type":"oxxo_recurrent","expires_at":1553273553} # CreateCustomerPaymentMethodsRequest | requested field for customer payment methods
-    accept_language = 'es' # str | Use for knowing which language to use (optional) (default to 'es')
+    body = {"type":"oxxo_recurrent","expires_at":1553273553} # PaymentMethodCashRequest | requested field for customer payment methods
+    accept_language = es # str | Use for knowing which language to use (optional) (default to es)
     x_child_company_id = '6441b6376b60c3a638da80af' # str | In the case of a holding company, the company id of the child company to which will process the request. (optional)
 
     try:
         # Create Payment Method
-        api_response = api_instance.create_customer_payment_methods(id, create_customer_payment_methods_request, accept_language=accept_language, x_child_company_id=x_child_company_id)
+        api_response = api_instance.create_customer_payment_methods(id, body, accept_language=accept_language, x_child_company_id=x_child_company_id)
         print("The response of PaymentMethodsApi->create_customer_payment_methods:\n")
         pprint(api_response)
     except Exception as e:
@@ -70,13 +70,13 @@ with digitalfemsa.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| Identifier of the resource | 
- **create_customer_payment_methods_request** | [**CreateCustomerPaymentMethodsRequest**](CreateCustomerPaymentMethodsRequest.md)| requested field for customer payment methods | 
- **accept_language** | **str**| Use for knowing which language to use | [optional] [default to &#39;es&#39;]
+ **body** | **PaymentMethodCashRequest**| requested field for customer payment methods | 
+ **accept_language** | **str**| Use for knowing which language to use | [optional] [default to es]
  **x_child_company_id** | **str**| In the case of a holding company, the company id of the child company to which will process the request. | [optional] 
 
 ### Return type
 
-[**CreateCustomerPaymentMethodsResponse**](CreateCustomerPaymentMethodsResponse.md)
+[**PaymentMethodCashResponse**](PaymentMethodCashResponse.md)
 
 ### Authorization
 
@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_customer_payment_methods**
-> UpdateCustomerPaymentMethodsResponse delete_customer_payment_methods(id, payment_method_id, accept_language=accept_language, x_child_company_id=x_child_company_id)
+> PaymentMethodCashResponse delete_customer_payment_methods(id, payment_method_id, accept_language=accept_language, x_child_company_id=x_child_company_id)
 
 Delete Payment Method
 
@@ -112,7 +112,7 @@ Delete an existing payment method
 
 ```python
 import digitalfemsa
-from digitalfemsa.models.update_customer_payment_methods_response import UpdateCustomerPaymentMethodsResponse
+from digitalfemsa.models.payment_method_cash_response import PaymentMethodCashResponse
 from digitalfemsa.rest import ApiException
 from pprint import pprint
 
@@ -138,7 +138,7 @@ with digitalfemsa.ApiClient(configuration) as api_client:
     api_instance = digitalfemsa.PaymentMethodsApi(api_client)
     id = '6307a60c41de27127515a575' # str | Identifier of the resource
     payment_method_id = 'src_2tQ974hSHcsdeSZHG' # str | Identifier of the payment method
-    accept_language = 'es' # str | Use for knowing which language to use (optional) (default to 'es')
+    accept_language = es # str | Use for knowing which language to use (optional) (default to es)
     x_child_company_id = '6441b6376b60c3a638da80af' # str | In the case of a holding company, the company id of the child company to which will process the request. (optional)
 
     try:
@@ -159,12 +159,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| Identifier of the resource | 
  **payment_method_id** | **str**| Identifier of the payment method | 
- **accept_language** | **str**| Use for knowing which language to use | [optional] [default to &#39;es&#39;]
+ **accept_language** | **str**| Use for knowing which language to use | [optional] [default to es]
  **x_child_company_id** | **str**| In the case of a holding company, the company id of the child company to which will process the request. | [optional] 
 
 ### Return type
 
-[**UpdateCustomerPaymentMethodsResponse**](UpdateCustomerPaymentMethodsResponse.md)
+[**PaymentMethodCashResponse**](PaymentMethodCashResponse.md)
 
 ### Authorization
 
@@ -225,7 +225,7 @@ with digitalfemsa.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = digitalfemsa.PaymentMethodsApi(api_client)
     id = '6307a60c41de27127515a575' # str | Identifier of the resource
-    accept_language = 'es' # str | Use for knowing which language to use (optional) (default to 'es')
+    accept_language = es # str | Use for knowing which language to use (optional) (default to es)
     x_child_company_id = '6441b6376b60c3a638da80af' # str | In the case of a holding company, the company id of the child company to which will process the request. (optional)
     limit = 20 # int | The numbers of items to return, the maximum value is 250 (optional) (default to 20)
     next = 'next_example' # str | next page (optional)
@@ -249,7 +249,7 @@ with digitalfemsa.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| Identifier of the resource | 
- **accept_language** | **str**| Use for knowing which language to use | [optional] [default to &#39;es&#39;]
+ **accept_language** | **str**| Use for knowing which language to use | [optional] [default to es]
  **x_child_company_id** | **str**| In the case of a holding company, the company id of the child company to which will process the request. | [optional] 
  **limit** | **int**| The numbers of items to return, the maximum value is 250 | [optional] [default to 20]
  **next** | **str**| next page | [optional] 
@@ -281,7 +281,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_customer_payment_methods**
-> UpdateCustomerPaymentMethodsResponse update_customer_payment_methods(id, payment_method_id, update_payment_methods, accept_language=accept_language, x_child_company_id=x_child_company_id)
+> PaymentMethodCashResponse update_customer_payment_methods(id, payment_method_id, update_payment_methods, accept_language=accept_language, x_child_company_id=x_child_company_id)
 
 Update Payment Method
 
@@ -293,7 +293,7 @@ Gets a payment Method that corresponds to a customer ID.
 
 ```python
 import digitalfemsa
-from digitalfemsa.models.update_customer_payment_methods_response import UpdateCustomerPaymentMethodsResponse
+from digitalfemsa.models.payment_method_cash_response import PaymentMethodCashResponse
 from digitalfemsa.models.update_payment_methods import UpdatePaymentMethods
 from digitalfemsa.rest import ApiException
 from pprint import pprint
@@ -321,7 +321,7 @@ with digitalfemsa.ApiClient(configuration) as api_client:
     id = '6307a60c41de27127515a575' # str | Identifier of the resource
     payment_method_id = 'src_2tQ974hSHcsdeSZHG' # str | Identifier of the payment method
     update_payment_methods = digitalfemsa.UpdatePaymentMethods() # UpdatePaymentMethods | requested field for customer payment methods
-    accept_language = 'es' # str | Use for knowing which language to use (optional) (default to 'es')
+    accept_language = es # str | Use for knowing which language to use (optional) (default to es)
     x_child_company_id = '6441b6376b60c3a638da80af' # str | In the case of a holding company, the company id of the child company to which will process the request. (optional)
 
     try:
@@ -343,12 +343,12 @@ Name | Type | Description  | Notes
  **id** | **str**| Identifier of the resource | 
  **payment_method_id** | **str**| Identifier of the payment method | 
  **update_payment_methods** | [**UpdatePaymentMethods**](UpdatePaymentMethods.md)| requested field for customer payment methods | 
- **accept_language** | **str**| Use for knowing which language to use | [optional] [default to &#39;es&#39;]
+ **accept_language** | **str**| Use for knowing which language to use | [optional] [default to es]
  **x_child_company_id** | **str**| In the case of a holding company, the company id of the child company to which will process the request. | [optional] 
 
 ### Return type
 
-[**UpdateCustomerPaymentMethodsResponse**](UpdateCustomerPaymentMethodsResponse.md)
+[**PaymentMethodCashResponse**](PaymentMethodCashResponse.md)
 
 ### Authorization
 

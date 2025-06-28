@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **custom_reference** | **str** | It is an undefined value. | [optional] 
 **fiscal_entities** | [**List[CustomerFiscalEntitiesRequest]**](CustomerFiscalEntitiesRequest.md) |  | [optional] 
 **metadata** | **Dict[str, object]** |  | [optional] 
-**payment_sources** | [**List[CustomerPaymentMethodsRequest]**](CustomerPaymentMethodsRequest.md) | Contains details of the payment methods that the customer has active or has used in Femsa | [optional] 
+**payment_sources** | [**List[PaymentMethodCashRequest]**](PaymentMethodCashRequest.md) | Contains details of the payment methods that the customer has active or has used in Femsa | [optional] 
 **shipping_contacts** | [**List[CustomerShippingContacts]**](CustomerShippingContacts.md) | Contains the detail of the shipping addresses that the client has active or has used in Femsa | [optional] 
 
 ## Example

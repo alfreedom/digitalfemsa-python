@@ -20,7 +20,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from digitalfemsa.models.get_customer_payment_method_data_response import GetCustomerPaymentMethodDataResponse
+from digitalfemsa.models.payment_method_cash_response import PaymentMethodCashResponse
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -32,7 +32,7 @@ class GetPaymentMethodResponse(BaseModel):
     object: StrictStr = Field(description="Object type, in this case is list")
     next_page_url: Optional[StrictStr] = Field(default=None, description="URL of the next page.")
     previous_page_url: Optional[StrictStr] = Field(default=None, description="Url of the previous page.")
-    data: Optional[List[GetCustomerPaymentMethodDataResponse]] = None
+    data: Optional[List[PaymentMethodCashResponse]] = None
     __properties: ClassVar[List[str]] = ["has_more", "object", "next_page_url", "previous_page_url", "data"]
 
     model_config = ConfigDict(
@@ -77,9 +77,9 @@ class GetPaymentMethodResponse(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in data (list)
         _items = []
         if self.data:
-            for _item in self.data:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_data in self.data:
+                if _item_data:
+                    _items.append(_item_data.to_dict())
             _dict['data'] = _items
         # set to None if next_page_url (nullable) is None
         # and model_fields_set contains the field
@@ -107,7 +107,7 @@ class GetPaymentMethodResponse(BaseModel):
             "object": obj.get("object"),
             "next_page_url": obj.get("next_page_url"),
             "previous_page_url": obj.get("previous_page_url"),
-            "data": [GetCustomerPaymentMethodDataResponse.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None
+            "data": [PaymentMethodCashResponse.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None
         })
         return _obj
 

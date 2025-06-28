@@ -277,7 +277,9 @@ class WebhooksApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -292,11 +294,12 @@ class WebhooksApi:
 
 
         # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            [
-                'application/vnd.app-v2.1.0+json'
-            ]
-        )
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/vnd.app-v2.1.0+json'
+                ]
+            )
 
         # set the HTTP header `Content-Type`
         if _content_type:
@@ -569,7 +572,9 @@ class WebhooksApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -584,11 +589,12 @@ class WebhooksApi:
 
 
         # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            [
-                'application/vnd.app-v2.1.0+json'
-            ]
-        )
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/vnd.app-v2.1.0+json'
+                ]
+            )
 
 
         # authentication setting
@@ -861,7 +867,9 @@ class WebhooksApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -878,11 +886,12 @@ class WebhooksApi:
 
 
         # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            [
-                'application/vnd.app-v2.1.0+json'
-            ]
-        )
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/vnd.app-v2.1.0+json'
+                ]
+            )
 
 
         # authentication setting
@@ -915,6 +924,7 @@ class WebhooksApi:
         x_child_company_id: Annotated[Optional[StrictStr], Field(description="In the case of a holding company, the company id of the child company to which will process the request.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="The numbers of items to return, the maximum value is 250")] = None,
         search: Annotated[Optional[StrictStr], Field(description="General order search, e.g. by mail, reference etc.")] = None,
+        url: Annotated[Optional[StrictStr], Field(description="url for webhook filter")] = None,
         next: Annotated[Optional[StrictStr], Field(description="next page")] = None,
         previous: Annotated[Optional[StrictStr], Field(description="previous page")] = None,
         _request_timeout: Union[
@@ -942,6 +952,8 @@ class WebhooksApi:
         :type limit: int
         :param search: General order search, e.g. by mail, reference etc.
         :type search: str
+        :param url: url for webhook filter
+        :type url: str
         :param next: next page
         :type next: str
         :param previous: previous page
@@ -973,6 +985,7 @@ class WebhooksApi:
             x_child_company_id=x_child_company_id,
             limit=limit,
             search=search,
+            url=url,
             next=next,
             previous=previous,
             _request_auth=_request_auth,
@@ -1004,6 +1017,7 @@ class WebhooksApi:
         x_child_company_id: Annotated[Optional[StrictStr], Field(description="In the case of a holding company, the company id of the child company to which will process the request.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="The numbers of items to return, the maximum value is 250")] = None,
         search: Annotated[Optional[StrictStr], Field(description="General order search, e.g. by mail, reference etc.")] = None,
+        url: Annotated[Optional[StrictStr], Field(description="url for webhook filter")] = None,
         next: Annotated[Optional[StrictStr], Field(description="next page")] = None,
         previous: Annotated[Optional[StrictStr], Field(description="previous page")] = None,
         _request_timeout: Union[
@@ -1031,6 +1045,8 @@ class WebhooksApi:
         :type limit: int
         :param search: General order search, e.g. by mail, reference etc.
         :type search: str
+        :param url: url for webhook filter
+        :type url: str
         :param next: next page
         :type next: str
         :param previous: previous page
@@ -1062,6 +1078,7 @@ class WebhooksApi:
             x_child_company_id=x_child_company_id,
             limit=limit,
             search=search,
+            url=url,
             next=next,
             previous=previous,
             _request_auth=_request_auth,
@@ -1093,6 +1110,7 @@ class WebhooksApi:
         x_child_company_id: Annotated[Optional[StrictStr], Field(description="In the case of a holding company, the company id of the child company to which will process the request.")] = None,
         limit: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="The numbers of items to return, the maximum value is 250")] = None,
         search: Annotated[Optional[StrictStr], Field(description="General order search, e.g. by mail, reference etc.")] = None,
+        url: Annotated[Optional[StrictStr], Field(description="url for webhook filter")] = None,
         next: Annotated[Optional[StrictStr], Field(description="next page")] = None,
         previous: Annotated[Optional[StrictStr], Field(description="previous page")] = None,
         _request_timeout: Union[
@@ -1120,6 +1138,8 @@ class WebhooksApi:
         :type limit: int
         :param search: General order search, e.g. by mail, reference etc.
         :type search: str
+        :param url: url for webhook filter
+        :type url: str
         :param next: next page
         :type next: str
         :param previous: previous page
@@ -1151,6 +1171,7 @@ class WebhooksApi:
             x_child_company_id=x_child_company_id,
             limit=limit,
             search=search,
+            url=url,
             next=next,
             previous=previous,
             _request_auth=_request_auth,
@@ -1177,6 +1198,7 @@ class WebhooksApi:
         x_child_company_id,
         limit,
         search,
+        url,
         next,
         previous,
         _request_auth,
@@ -1194,7 +1216,9 @@ class WebhooksApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1206,6 +1230,10 @@ class WebhooksApi:
         if search is not None:
             
             _query_params.append(('search', search))
+            
+        if url is not None:
+            
+            _query_params.append(('url', url))
             
         if next is not None:
             
@@ -1225,11 +1253,12 @@ class WebhooksApi:
 
 
         # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            [
-                'application/vnd.app-v2.1.0+json'
-            ]
-        )
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/vnd.app-v2.1.0+json'
+                ]
+            )
 
 
         # authentication setting
@@ -1492,7 +1521,9 @@ class WebhooksApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1507,11 +1538,12 @@ class WebhooksApi:
 
 
         # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            [
-                'application/vnd.app-v2.1.0+json'
-            ]
-        )
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/vnd.app-v2.1.0+json'
+                ]
+            )
 
 
         # authentication setting
@@ -1800,7 +1832,9 @@ class WebhooksApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1819,11 +1853,12 @@ class WebhooksApi:
 
 
         # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            [
-                'application/vnd.app-v2.1.0+json'
-            ]
-        )
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/vnd.app-v2.1.0+json'
+                ]
+            )
 
         # set the HTTP header `Content-Type`
         if _content_type:
